@@ -8,49 +8,45 @@
 </head>
 <body>
     <script>
-        const getMax = function(a, b) {
-           
-            let min;
-            let max;
-            if (a > b) {
-                a = max, b = min;
-                
-            }
-            else if (a < b) {
-                a = min, b = max;
-            }
-        }
-        
-        console.log(getMax(1, 4))
 
         const sumAll = function(a, b) {
-
+            
             let min;
             let max;
+            console.log(max);
+            //throws an error if one of the arguments is negative
+            if ( max < 0 || min < 0) {
+                throw Error();
+            }
+            //defines which is min and which is max
+
             if (a > b) {
                 a = max, b = min;
+                console.log(max, min);
+                let output = 0;
+                while (min <= max) {
+                    output = output + min;
+                    min++;
+                    console.log(output);
+                }
+                return output;
                 
             }
             else if (a < b) {
                 a = min, b = max;
-            }
-             
-            if ( a < 0 || b < 0) {
-                throw Error();
-            }
-            if (a < b) {
                 let output = 0;
-                while(a <= b){
-                    output = output + a;
-                    a++;
+                while(min <= max){
+                    output = output + min;
+                    min++;
                 }
-            
+                
                 return output;
-
             }
+
+
         };
-        
-        console.log(sumAll(1,4000));
+        console.log(sumAll(1, 5));
+        console.log(sumAll(1,4));
     
     
     </script>
