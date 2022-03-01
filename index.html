@@ -8,18 +8,51 @@
 </head>
 <body>
     <script>
-        const removeFromArray = function(array, num, num2) {
-            let output = [];
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] == num || array[i] == num2) {
-                    continue;
-                }
-                output.push(array[i]);
+        const getMax = function(a, b) {
+           
+            let min;
+            let max;
+            if (a > b) {
+                a = max, b = min;
+                
             }
-            return output;
-        };
+            else if (a < b) {
+                a = min, b = max;
+            }
+        }
+        
+        console.log(getMax(1, 4))
 
-        console.log(removeFromArray([1,2,4,5,6], 2, 4));
+        const sumAll = function(a, b) {
+
+            let min;
+            let max;
+            if (a > b) {
+                a = max, b = min;
+                
+            }
+            else if (a < b) {
+                a = min, b = max;
+            }
+             
+            if ( a < 0 || b < 0) {
+                throw Error();
+            }
+            if (a < b) {
+                let output = 0;
+                while(a <= b){
+                    output = output + a;
+                    a++;
+                }
+            
+                return output;
+
+            }
+        };
+        
+        console.log(sumAll(1,4000));
+    
+    
     </script>
 </body>
 </html>
