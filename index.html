@@ -8,47 +8,41 @@
 </head>
 <body>
     <script>
+/*         const removeFromArray = function(array, num, num2) {
+            let output = [];
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] == num || array[i] == num2) {
+                    continue;
+                }
+                output.push(array[i]);
+            }
+            return output;
+        }; */
 
-        const sumAll = function(a, b) {
+        const removeFromAnArray = function(first, ...theArgs) {
+            let output = [];
+            for (let i = 0; i < first.length; i++) {
+                    for (let j = 0; j < theArgs.length; j++)
+                    
+                        if (first[i] == theArgs[j]) {
+                            console.log(output);
+                            continue;
+                        }
+                        else {
+
+                            output.push(first[j]);
+                            console.log(output);
+                        }
+                        
+                        
+                }
             
-            let min;
-            let max;
-            console.log(max);
-            //throws an error if one of the arguments is negative
-            if ( max < 0 || min < 0) {
-                throw Error();
-            }
-            //defines which is min and which is max
+            return output;
+        }
+            
+        
+        console.log("final",removeFromAnArray([1, 2, 3], 1, 2, 3));
 
-            if (a > b) {
-                a = max, b = min;
-                console.log(max, min);
-                let output = 0;
-                while (min <= max) {
-                    output = output + min;
-                    min++;
-                    console.log(output);
-                }
-                return output;
-                
-            }
-            else if (a < b) {
-                a = min, b = max;
-                let output = 0;
-                while(min <= max){
-                    output = output + min;
-                    min++;
-                }
-                
-                return output;
-            }
-
-
-        };
-        console.log(sumAll(1, 5));
-        console.log(sumAll(1,4));
-    
-    
     </script>
 </body>
 </html>
