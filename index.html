@@ -8,40 +8,43 @@
 </head>
 <body>
     <script>
-/*         const removeFromArray = function(array, num, num2) {
-            let output = [];
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] == num || array[i] == num2) {
-                    continue;
-                }
-                output.push(array[i]);
-            }
-            return output;
-        }; */
 
-        const removeFromAnArray = function(first, ...theArgs) {
-            let output = [];
+
+        const removeFromArray = function(first, ...theArgs) {
+            //declare a function with two parameters, one is input, the other is to delete from that input
+            //check if second parameter is in the first parameter, it it is, return the first paramater without the 2nd parameter. If not, return 1st parameter as is
+            let output = first;
+            console.log("beforelength", first.length);
             for (let i = 0; i < first.length; i++) {
-                    for (let j = 0; j < theArgs.length; j++)
+                console.log("indeed",first[1] == theArgs[1]);
+                for (let j = 0; j < theArgs.length; j++) {
                     
-                        if (first[i] == theArgs[j]) {
-                            console.log(output);
-                            continue;
-                        }
-                        else {
-
-                            output.push(first[j]);
-                            console.log(output);
-                        }
-                        
-                        
+                    if ( first[i] == theArgs[j]) {
+                        output.splice(i, 1);
+                        console.log(theArgs[0]);
+                        console.log(i);
+                        console.log(output);
+                        console.log("length", first.length);
+                        console.log("theArgs length", theArgs.length);
+                        console.log("zero", first[0]);
+                        console.log("first", first[1]);
+                        console.log("second", first[2]);
+                        console.log("third", first[3]);
+                    }
                 }
+            }
+            let copyOfOutput = output;
+            if (copyOfOutput[1] == theArgs[0]) copyOfOutput.splice(1, 1);
+            return copyOfOutput;
             
-            return output;
+
         }
+        console.log(removeFromArray([1, 2, 3, 4], 3, 2));
             
         
-        console.log("final",removeFromAnArray([1, 2, 3], 1, 2, 3));
+            
+        
+  
 
     </script>
 </body>
