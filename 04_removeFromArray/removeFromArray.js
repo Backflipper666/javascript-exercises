@@ -2,12 +2,12 @@ const removeFromArray = function(first, ...theArgs) {
     //declare a function with two parameters, one is input, the other is to delete from that input
     //check if second parameter is in the first parameter, it it is, return the first paramater without the 2nd parameter. If not, return 1st parameter as is
     let output = first;
-    console.log("beforelength", first.length);
+    
     for (let i = 0; i < first.length; i++) {
-        console.log("indeed",first[1] == theArgs[1]);
+        
         for (let j = 0; j < theArgs.length; j++) {
             
-            if ( first[i] == theArgs[j]) {
+            if ( (first[i] == theArgs[j]) && typeof(first[i]) == typeof(theArgs[j])) {
                 output.splice(i, 1);
 
             }
