@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index leap years</title>
+</head>
+<body>
+    <script>
+        //if year is divisible by 400, it's a leap year
+        //if year is divisible by 100, it's not a leap year
+        //if year is divisible by 4, it's a leap year
+
+        
+        let determineLeap = function(year) {
+            if ((year % 400) == 0) return true;
+            else if ((year % 100) == 0) return false;
+            else if ((year % 4) == 0) return true;
+            else {
+                return false;
+            }
+        }
+        console.log(determineLeap(2020));
+        console.log(100 % 4);
+    </script>
+</body>
+</html>
