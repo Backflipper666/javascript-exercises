@@ -102,44 +102,44 @@ function roman_to_Int(str1) {
 //split string by " ";
 //replace operands by "",
 function calculator(string) {
+    if (!checkDigit(string)) {
+        let operator = string.split(" ");
     
-    let operator = string.split(" ");
-    
-    let container = [];
-    let operand = "";
-    for (let i = 0; i < operator.length; i++) {
-        if (operator[i] == "+" || operator[i] == "-" || operator[i] == "/" || operator[i] == "*") operand = operator[i]; 
-        if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
-            
-            container.push(roman_to_Int(operator[i]));
-            
+        let container = [];
+        let operand = "";
+        for (let i = 0; i < operator.length; i++) {
+            if (operator[i] == "+" || operator[i] == "-" || operator[i] == "/" || operator[i] == "*") operand = operator[i]; 
+            if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
+                
+                container.push(roman_to_Int(operator[i]));
+                
+            }
         }
+        container.push(operand);
+        
+    
+        //calculate
+        let first = container[0];
+        let second = container[1];
+        let output = '';
+        if (operand == "+") output = first + second;
+        else if (operand == "-") output = first - second;
+        else if (operand == "*") output = first * second;
+        else if (operand == "/") output = first / second;
+        
+        //convert back to roman
+        let backToRoman = convertToRoman(output);
+        
+    
+    
+        return backToRoman;
     }
-    container.push(operand);
-    
 
-    //calculate
-    let first = container[0];
-    let second = container[1];
-    let output = '';
-    if (operand == "+") output = first + second;
-    else if (operand == "-") output = first - second;
-    else if (operand == "*") output = first * second;
-    else if (operand == "/") output = first / second;
-    
-    //convert back to roman
-    let backToRoman = convertToRoman(output);
-    console.log(backToRoman);
-
-
-    return container;
 
 } 
-calculator("XX * X");
+
 
 function checkDigit(string) {
     let isNum = /^\d+$/.test(string);
     return (isNum)
-    
-
 }
