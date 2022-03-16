@@ -98,8 +98,9 @@ function roman_to_Int(str1) {
 //split string by " ";
 //replace operands by "",
 function calculator(string) {
-    
+    if (string === '') throw new Error("Cannot be an empty string");
     let operator = string.split(" ");
+
     
     if ((checkDigit(operator[0]) == true && (checkDigit(operator[2])) == true)) {
         
@@ -159,9 +160,13 @@ function calculator(string) {
             else if (operand == "-") output = first - second;
             else if (operand == "*") output = first * second;
             else if (operand == "/") output = first / second;
+            console.log(output);
             
             //convert back to roman
-            let backToRoman = convertToRoman(output);
+            let roundedBeforeConversion = Math.floor(output);
+            console.log(roundedBeforeConversion);
+            if (roundedBeforeConversion == 0) return "";
+            let backToRoman = convertToRoman(roundedBeforeConversion);
             
 
 
@@ -170,7 +175,7 @@ function calculator(string) {
     
 
 } 
-console.log(calculator("2 + 11"));
+console.log(calculator(""));
 
 function checkDigit(string) {
     let isNum = /^\d+$/.test(string);
