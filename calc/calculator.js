@@ -3,11 +3,14 @@
 function calculator(string) {
   if (string === '' || string === " " || string === "     ") throw new Error("Cannot be an empty string");
   if (string.length <= 3 || string[2] == "%") throw new Error("Must have two values");
+  if (string.length > 8) throw new Error("Must have two values ");
   let operator = string.split(" ");
   
 
   
   if ((checkDigit(operator[0]) == true && (checkDigit(operator[2])) == true)) {
+      if (operator[0] > 10 || operator[0] <= 0) throw new Error("Numbers should be between  1 and 10");
+      if (operator[2] > 10 || operator[2] <= 0) throw new Error("Numbers should be between 1 and 10");
       
       const noWsStr = string.replace(/\s/g, '');
       const operators = noWsStr.replace(/[\d.,]/g, '').split('');
@@ -58,9 +61,12 @@ function calculator(string) {
           
 
           //calculate
+          
           let first = container[0];
           let second = container[1];
           let output = '';
+          if (first > 10 || first <= 0) throw new Error("NUmbers should be between 1 and 10");
+          if (second > 10 || second <= 0) throw new Error("NUmbers should be between 1 and 10 ");
           if (operand == "+") output = first + second;
           else if (operand == "-") output = first - second;
           else if (operand == "*") output = first * second;
@@ -75,6 +81,9 @@ function calculator(string) {
 
 
           return backToRoman;
+  }
+  else {
+    throw new Error("Both numbers should be either arabic or roman");
   }
   
 
