@@ -1,5 +1,5 @@
 
-function calculator(string) {
+/* function calculator(string) {
     const noWsStr = string.replace(/\s/g, '');
     const operators = noWsStr.replace(/[\d.,]/g, '').split('');
     const operands = noWsStr.replace(/[+/%*-]/g, ' ')
@@ -35,7 +35,7 @@ function calculator(string) {
     let rounded = Math.floor(result);
     let resultConverted = rounded.toString();
     return resultConverted;
-}
+} */
 
 function convertToRoman(num) {
     var roman = {
@@ -101,8 +101,9 @@ function roman_to_Int(str1) {
 
 //split string by " ";
 //replace operands by "",
-function romanStringToInt(roman) {
-    let operator = roman.split(" ");
+function calculator(string) {
+    
+    let operator = string.split(" ");
     
     let container = [];
     let operand = "";
@@ -134,4 +135,11 @@ function romanStringToInt(roman) {
     return container;
 
 } 
-romanStringToInt("XX + I");
+calculator("XX * X");
+
+function checkDigit(string) {
+    let isNum = /^\d+$/.test(string);
+    return (isNum)
+    
+
+}
