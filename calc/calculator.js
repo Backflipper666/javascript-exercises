@@ -2,7 +2,7 @@
 //replace operands by "",
 function calculator(string) {
   if (string === '' || string === " " || string === "     ") throw new Error("Cannot be an empty string");
-  if (string.length <= 3) throw new Error("Must have two values");
+  if (string.length <= 3 || string[2] == "%") throw new Error("Must have two values");
   let operator = string.split(" ");
   
 

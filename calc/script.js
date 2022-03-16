@@ -8,6 +8,8 @@ function calculator(string) {
   
     
     if ((checkDigit(operator[0]) == true && (checkDigit(operator[2])) == true)) {
+        if (operator[0] > 10 || operator[0] <= 0) throw new Error("Numbers should be between  1 and 10");
+        if (operator[2] > 10 || operator[2] <= 0) throw new Error("Numbers should be between 1 and 10");
         
         const noWsStr = string.replace(/\s/g, '');
         const operators = noWsStr.replace(/[\d.,]/g, '').split('');
@@ -82,7 +84,7 @@ function calculator(string) {
     
   
   } 
-  console.log(calculator("XI + X"));
+  console.log(calculator("0 + 1"));
   
   
   function convertToRoman(num) {
