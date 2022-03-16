@@ -1,4 +1,3 @@
-
 /* function calculator(string) {
     const noWsStr = string.replace(/\s/g, '');
     const operators = noWsStr.replace(/[\d.,]/g, '').split('');
@@ -7,11 +6,9 @@
                             .split(' ')
                             .map(parseFloat)
                             .filter(it => it);
-
     if (operators.length >= operands.length){
         throw new Error('Operators qty must be lesser than operands qty')
     };
-
     while (operators.includes('*')) {
         let opIndex = operators.indexOf('*');
         operands.splice(opIndex, 2, operands[opIndex] * operands[opIndex + 1]);
@@ -27,7 +24,6 @@
         operands.splice(opIndex, 2, operands[opIndex] % operands[opIndex + 1]);
         operators.splice(opIndex, 1);
     };
-
     let result = operands[0];
     for (let i = 0; i < operators.length; i++) {
         operators[i] === '+' ? (result += operands[i + 1]) : (result -= operands[i + 1])
@@ -102,44 +98,82 @@ function roman_to_Int(str1) {
 //split string by " ";
 //replace operands by "",
 function calculator(string) {
-    if (!checkDigit(string)) {
-        let operator = string.split(" ");
     
-        let container = [];
-        let operand = "";
-        for (let i = 0; i < operator.length; i++) {
-            if (operator[i] == "+" || operator[i] == "-" || operator[i] == "/" || operator[i] == "*") operand = operator[i]; 
-            if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
-                
-                container.push(roman_to_Int(operator[i]));
-                
-            }
+    let operator = string.split(" ");
+    
+    if ((checkDigit(operator[0]) == true && (checkDigit(operator[2])) == true)) {
+        
+        const noWsStr = string.replace(/\s/g, '');
+        const operators = noWsStr.replace(/[\d.,]/g, '').split('');
+        const operands = noWsStr.replace(/[+/%*-]/g, ' ')
+                                .replace(/\,/g, '.')
+                                .split(' ')
+                                .map(parseFloat)
+                                .filter(it => it);
+        if (operators.length >= operands.length){
+            throw new Error('Operators qty must be lesser than operands qty')
+        };
+        while (operators.includes('*')) {
+            let opIndex = operators.indexOf('*');
+            operands.splice(opIndex, 2, operands[opIndex] * operands[opIndex + 1]);
+            operators.splice(opIndex, 1);
+        };
+        while (operators.includes('/')) {
+            let opIndex = operators.indexOf('/');
+            operands.splice(opIndex, 2, operands[opIndex] / operands[opIndex + 1]);
+            operators.splice(opIndex, 1);
+        };
+        while (operators.includes('%')) {
+            let opIndex = operators.indexOf('%');
+            operands.splice(opIndex, 2, operands[opIndex] % operands[opIndex + 1]);
+            operators.splice(opIndex, 1);
+        };
+        let result = operands[0];
+        for (let i = 0; i < operators.length; i++) {
+            operators[i] === '+' ? (result += operands[i + 1]) : (result -= operands[i + 1])
         }
-        container.push(operand);
+        let rounded = Math.floor(result);
+        let resultConverted = rounded.toString();
         
-    
-        //calculate
-        let first = container[0];
-        let second = container[1];
-        let output = '';
-        if (operand == "+") output = first + second;
-        else if (operand == "-") output = first - second;
-        else if (operand == "*") output = first * second;
-        else if (operand == "/") output = first / second;
-        
-        //convert back to roman
-        let backToRoman = convertToRoman(output);
-        
-    
-    
-        return backToRoman;
+        return resultConverted;
     }
+    else if (!checkDigit(operator[0]) && !checkDigit(operator[2])) {
+        let container = [];
+            let operand = "";
+            for (let i = 0; i < operator.length; i++) {
+                if (operator[i] == "+" || operator[i] == "-" || operator[i] == "/" || operator[i] == "*") operand = operator[i]; 
+                if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
+                    
+                    container.push(roman_to_Int(operator[i]));
+                    
+                }
+            }
+            container.push(operand);
+            
 
+            //calculate
+            let first = container[0];
+            let second = container[1];
+            let output = '';
+            if (operand == "+") output = first + second;
+            else if (operand == "-") output = first - second;
+            else if (operand == "*") output = first * second;
+            else if (operand == "/") output = first / second;
+            
+            //convert back to roman
+            let backToRoman = convertToRoman(output);
+            
+
+
+            return backToRoman;
+    }
+    
 
 } 
-
+console.log(calculator("2 + 11"));
 
 function checkDigit(string) {
     let isNum = /^\d+$/.test(string);
     return (isNum)
+    
 }
