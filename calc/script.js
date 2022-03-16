@@ -103,11 +103,13 @@ function roman_to_Int(str1) {
 //replace operands by "",
 function calc(roman) {
     let operator = roman.split(" ");
+    console.log(operator);
 
     for (let i = 0; i < operator.length; i++) {
-        if (operator != "+" || operator != "-" || operator != "/" || operator != "*") {
-            roman_to_Int(operator[i]);
+        if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
+            
             console.log(roman_to_Int(operator[i]));
+            
         }
     }
 
