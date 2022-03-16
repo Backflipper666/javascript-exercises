@@ -75,7 +75,7 @@ function calculator(string) {
           
           //convert back to roman
           let roundedBeforeConversion = Math.floor(output);
-          if (roundedBeforeConversion == 0) return "";
+          if (roundedBeforeConversion == 0 || roundedBeforeConversion < 0) return "";
           let backToRoman = convertToRoman(roundedBeforeConversion);
           
 

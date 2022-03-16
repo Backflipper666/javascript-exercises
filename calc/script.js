@@ -3,7 +3,7 @@
 function calculator(string) {
     if (string === '' || string === " " || string === "     ") throw new Error("Cannot be an empty string");
     if (string.length <= 3 || string[2] == "%") throw new Error("Must have two values");
-    if (string.length > 6) throw new Error("Must have two values ");
+    if (string.length > 8) throw new Error("Must have two values ");
     let operator = string.split(" ");
     
   
@@ -11,7 +11,6 @@ function calculator(string) {
     if ((checkDigit(operator[0]) == true && (checkDigit(operator[2])) == true)) {
         if (operator[0] > 10 || operator[0] <= 0) throw new Error("Numbers should be between  1 and 10");
         if (operator[2] > 10 || operator[2] <= 0) throw new Error("Numbers should be between 1 and 10");
-        
         
         const noWsStr = string.replace(/\s/g, '');
         const operators = noWsStr.replace(/[\d.,]/g, '').split('');
@@ -76,17 +75,20 @@ function calculator(string) {
             
             //convert back to roman
             let roundedBeforeConversion = Math.floor(output);
-            if (roundedBeforeConversion == 0) return "";
+            if (roundedBeforeConversion == 0 || roundedBeforeConversion < 0) return "";
             let backToRoman = convertToRoman(roundedBeforeConversion);
             
   
   
             return backToRoman;
     }
+    else {
+      throw new Error("Both numbers should be either arabic or roman");
+    }
     
   
   } 
-  console.log(calculator("1 + 1 + 1"));
+  console.log(calculator("I - X"));
   
   
   function convertToRoman(num) {
