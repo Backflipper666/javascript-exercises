@@ -105,15 +105,33 @@ function romanStringToInt(roman) {
     let operator = roman.split(" ");
     
     let container = [];
-
+    let operand = "";
     for (let i = 0; i < operator.length; i++) {
+        if (operator[i] == "+" || operator[i] == "-" || operator[i] == "/" || operator[i] == "*") operand = operator[i]; 
         if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
             
             container.push(roman_to_Int(operator[i]));
             
         }
     }
+    container.push(operand);
+    
+
+    //calculate
+    let first = container[0];
+    let second = container[1];
+    let output = '';
+    if (operand == "+") output = first + second;
+    else if (operand == "-") output = first - second;
+    else if (operand == "*") output = first * second;
+    else if (operand == "/") output = first / second;
+    
+    //convert back to roman
+    let backToRoman = convertToRoman(output);
+    console.log(backToRoman);
+
+
     return container;
 
 } 
-console.log(romanStringToInt("X + XX"));
+romanStringToInt("XX + I");
