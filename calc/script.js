@@ -101,17 +101,19 @@ function roman_to_Int(str1) {
 
 //split string by " ";
 //replace operands by "",
-function calc(roman) {
+function romanStringToInt(roman) {
     let operator = roman.split(" ");
-    console.log(operator);
+    
+    let container = [];
 
     for (let i = 0; i < operator.length; i++) {
         if (operator[i] !== "+" && operator[i] !== "-" && operator[i] !== "/" && operator[i] !== "*") {
             
-            console.log(roman_to_Int(operator[i]));
+            container.push(roman_to_Int(operator[i]));
             
         }
     }
+    return container;
 
 } 
-calc("XX + X");
+console.log(romanStringToInt("X + XX"));
