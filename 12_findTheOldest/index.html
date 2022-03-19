@@ -26,22 +26,32 @@
       },
     ]
 
-
-const findTheOldest = function() {
+    const findTheOldest = function() {
     
-    const oldest = people.sort((a, b) => {
-        if ((a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)) {
-            return 1;
-        }
-        else{
-            return -1;
-        }
-        return oldie;
-    })
-
+    const oldest = people.sort((a, b) => (a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)? 1 : -1)
     oldie = oldest[oldest.length - 1]
+    console.table(oldest)
+    return oldie;
+   
+   
     
 };
+
+console.log(findTheOldest());
+
+
+
+
+
+/* function sortAge() {
+    people.sort((a, b) => {
+        if ((a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)) return 1;
+        else {
+            return -1;
+        }
+    })
+}
+console.log(sortAge(people)); */
  
     </script>
 </body>
