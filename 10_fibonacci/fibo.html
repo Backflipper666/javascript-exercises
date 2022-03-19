@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibo</title>
+</head>
+<body>
+    <script>
+        const fibonacci = function(num) {
+            //fibonacci(5) returns  5 (1, 1, 2, 3, 5)
+            //push fibonacci sequence into an array
+            //return index of num + 1
+            if (num == 1) return 1;
+            else if (num == 2) return 1;
+            
+            let array = [1, 1, 2];
+            for (let i = 3; array.length <= num; ) {
+               if ((i !== ((i - 2) + (i - 1)))) {
+                   continue;
+               }
+               array.push(i);
+                console.log(array);
+                
+            }
+            
+        };
+        console.log(fibonacci(4));
+
+
+
+    </script>
+</body>
+</html>
