@@ -26,13 +26,22 @@
       },
     ]
 
-  
-   
-    const young = people.map(person => {
-        let age = (person.yearOfDeath - person.yearOfBirth)
-        console.log(age);
-        return age;
+
+const findTheOldest = function() {
+    
+    const oldest = people.sort((a, b) => {
+        if ((a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)) {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+        return oldie;
     })
+
+    oldie = oldest[oldest.length - 1]
+    
+};
  
     </script>
 </body>
