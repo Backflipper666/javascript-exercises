@@ -26,32 +26,16 @@
       },
     ]
 
-    const findTheOldest = function() {
-    
-    const oldest = people.sort((a, b) => (a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)? 1 : -1)
-    oldie = oldest[oldest.length - 1]
-    console.table(oldest)
-    return oldie;
-   
-   
-    
+    const findTheOldest = function(people) {
+        let max = people.reduce((accumulator, currentValue) => {
+            currentValue = (currentValue.yearOfDeath - currentValue.yearOfBirth);
+            console.log(currentValue);
+            return (accumulator > currentValue ? accumulator : currentValue);
+        }) 
+    return max;
 };
+console.log(findTheOldest(people));
 
-console.log(findTheOldest());
-
-
-
-
-
-/* function sortAge() {
-    people.sort((a, b) => {
-        if ((a.yearOfDeath - a.yearOfBirth) > (b.yearOfDeath - b.yearOfBirth)) return 1;
-        else {
-            return -1;
-        }
-    })
-}
-console.log(sortAge(people)); */
  
     </script>
 </body>
