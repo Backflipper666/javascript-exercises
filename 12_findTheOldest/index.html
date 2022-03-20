@@ -31,8 +31,23 @@
 //return object that has the max property
 
 function findMaximum(people) {
+    let array = [];
+   
     for (let i = 0; i < people.length; i++){
-        console.log(people[i]);
+        //console.log(people[i]);
+        let age = people[i].yearOfDeath - people[i].yearOfBirth;
+        console.log(age);
+        array.push(age);
+        
+
+
+    }
+    console.log(array);
+    let maxAge = Math.max(...array);
+    console.log("Maximum age is: " + maxAge);
+    for (let i = 0; i < people.length; i++) {
+        let age = people[i].yearOfDeath - people[i].yearOfBirth;
+        if (age == maxAge) return people[i];
     }
 }
 console.log(findMaximum(people));
