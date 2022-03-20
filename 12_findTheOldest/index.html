@@ -64,7 +64,14 @@ function findMaximum(people) {
     let maxAge = Math.max(...array);
     console.log("Maximum age is: " + maxAge);
     for (let i = 0; i < people.length; i++) {
-        let age = people[i].yearOfDeath - people[i].yearOfBirth;
+        let currentYear = new Date().getFullYear();
+        age = 0;
+        //if yearOfDeath is undefined, age = currentYear - yearOfBirth
+        //else                         age = yearOfDeath - yearOfBirth
+        if (people[i].yearOfDeath === undefined) age = currentYear - people[i].yearOfBirth;
+        else {
+            age = people[i].yearOfDeath - people[i].yearOfBirth;
+        }
         if (age == maxAge) return people[i];
     }
 }
