@@ -24,25 +24,43 @@
         yearOfBirth: 1912,
         yearOfDeath: 1941,
       },
+      {
+          name: "Gary",
+          yearOfBirth:1990,
+      }
     ]
 
 //loop through the objects
 //count how many years each object has lived, get max
+      //if someone is still living and does not have yearOfDeath, subtract year of birth from the current year.
 //return object that has the max property
+//
 
 function findMaximum(people) {
+    
     let array = [];
    
     for (let i = 0; i < people.length; i++){
         //console.log(people[i]);
-        let age = people[i].yearOfDeath - people[i].yearOfBirth;
+        //if yearOfDeath is undefined, age = currentYear - yearOfBirth
+        //else if yearOfDeath is defined, age = yeafOfDeath -yearOfBirth;
+        let currentYear = new Date().getFullYear();
+        let age = 0;
+        if (people[i].yearOfDeath === undefined) {
+            age = currentYear - people[i].yearOfBirth;
+            array.push(age)
+        }
+        else {
+            age = people[i].yearOfDeath - people[i].yearOfBirth;
         console.log(age);
         array.push(age);
+        }
         
-
-
+        
+        
     }
-    console.log(array);
+    console.log("array is" + array);
+    
     let maxAge = Math.max(...array);
     console.log("Maximum age is: " + maxAge);
     for (let i = 0; i < people.length; i++) {
@@ -51,6 +69,11 @@ function findMaximum(people) {
     }
 }
 console.log(findMaximum(people));
+
+/* let currentYear = new Date().getFullYear();
+let yearOfbirth = 1995;
+let age = currentYear - yearOfbirth;
+console.log(age); */
  
     </script>
 </body>
