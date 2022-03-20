@@ -26,16 +26,16 @@
       },
     ]
 
-    const findTheOldest = function(people) {
-        let max = people.reduce((accumulator, currentValue) => {
-            currentValue = (currentValue.yearOfDeath - currentValue.yearOfBirth);
-            console.log(currentValue);
-            return (accumulator > currentValue ? accumulator : currentValue);
-        }) 
-    return max;
-};
-console.log(findTheOldest(people));
+//loop through the objects
+//count how many years each object has lived, get max
+//return object that has the max property
 
+function findMaximum(people) {
+    for (let i = 0; i < people.length; i++){
+        console.log(people[i]);
+    }
+}
+console.log(findMaximum(people));
  
     </script>
 </body>
